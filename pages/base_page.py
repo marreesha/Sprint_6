@@ -45,14 +45,14 @@ class BasePage:
         """Метод ожидания видимости элемента"""
         return self.wait.until(EC.visibility_of_element_located(locator))
 
-    def scroll_to(self, locator):
-        """Метод прокрутки страницы до элемента"""
-        element = self.find_element(locator)
-        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
-
     def scroll_to_element(self, element):
         """Метод прокрутки страницы до элемента"""
         self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+
+    def scroll_to(self, locator):
+        """Метод прокрутки страницы до элемента"""
+        element = self.find_element(locator)
+        self.scroll_to_element(element)
 
     def get_page(self, url):
         """Метод вызова и ожидания загрузки страницы"""
