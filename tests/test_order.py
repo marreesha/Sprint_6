@@ -1,10 +1,7 @@
 import pytest
 import allure
-from pages import MainPage, OrderPage
 from helpers import generate_order_data
 from conftest import driver, get_main_page, complete_order
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from helpers import URLs
 
 
@@ -22,8 +19,6 @@ class TestOrder:
             main_page = get_main_page
 
         main_page.click_order_button_top()  # Кликаем по кнопке
-        # Ожидание перехода на страницу заказа
-        WebDriverWait(driver, 3).until(EC.url_to_be(URLs.ORDER_PAGE))
 
         with allure.step("Проверка URL страницы заказа"):
             assert driver.current_url == URLs.ORDER_PAGE, "Переход не удался"
@@ -38,8 +33,6 @@ class TestOrder:
             main_page = get_main_page
 
         main_page.click_order_button_bottom()  # Кликаем по кнопке
-        # Ожидание перехода на страницу заказа
-        WebDriverWait(driver, 3).until(EC.url_to_be(URLs.ORDER_PAGE))
 
         with allure.step("Проверка URL страницы заказа"):
             assert driver.current_url == URLs.ORDER_PAGE, "Переход не удался"
@@ -58,8 +51,8 @@ class TestOrder:
         with allure.step("Открытие страницы заказа"):
             order_page = get_order_page
 
-        order_page.set_order_information(order_data)
-        order_page.submit_order()
+        order_page.set_order_information(order_data)  # Заполнение полей для заказа
+        order_page.submit_order()  # Подтверждение заказа
 
         with allure.step("Проверка успешного оформления заказа"):
             success_message, order_number = order_page.get_success_message()
@@ -76,10 +69,7 @@ class TestOrder:
             order_page = complete_order
 
         order_page.click_view_status()
-        WebDriverWait(driver, 3).until(EC.visibility_of_element_located(OrderPage.look_button_locator))
-
         order_page.click_logo_scooter()  # Клик по кнопке «Самоката»
-        WebDriverWait(driver, 3).until(EC.url_to_be(URLs.BASE_URL))
 
         with allure.step("Проверка URL страницы заказа"):
             assert driver.current_url == URLs.BASE_URL, "Переход не удался"
@@ -94,11 +84,7 @@ class TestOrder:
             order_page = complete_order
 
         order_page.click_view_status()
-        WebDriverWait(driver, 3).until(EC.visibility_of_element_located(OrderPage.look_button_locator))
-
         order_page.click_logo_yandex()  # Клик по кнопке «Яндекс»
-        driver.switch_to.window(driver.window_handles[1])  # Переход на новую вкладку
-        WebDriverWait(driver, 3).until(EC.url_to_be(URLs.YANDEX_PAGE))
 
         with allure.step("Проверка URL страницы заказа"):
             assert driver.current_url == URLs.YANDEX_PAGE, "Переход не удался"

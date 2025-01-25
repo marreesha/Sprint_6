@@ -3,38 +3,43 @@ from selenium.webdriver.common.by import By
 
 class OrderPageLocators:
     # Локатор поля ввода имени
-    name_input_locator = (By.XPATH, "//input[@placeholder='* Имя']")
+    NAME_INPUT_LOCATOR = (By.XPATH, "//input[@placeholder='* Имя']")
     # Локатор поля ввода фамилии
-    surname_input_locator = (By.XPATH, "//input[@placeholder='* Фамилия']")
+    SURNAME_INPUT_LOCATOR = (By.XPATH, "//input[@placeholder='* Фамилия']")
     # Локатор поля ввода адреса
-    address_input_locator = (By.XPATH, "//input[@placeholder='* Адрес: куда привезти заказ']")
+    ADDRESS_INPUT_LOCATOR = (By.XPATH, "//input[@placeholder='* Адрес: куда привезти заказ']")
     # Локатор поля ввода станции метро
-    metro_field_locator = (By.XPATH, "//input[@placeholder='* Станция метро']")
+    METRO_FIELD_LOCATOR = (By.XPATH, "//input[@placeholder='* Станция метро']")
     # Локатор списка вариантов метро
-    metro_options_locator = (By.XPATH, "//div[@class='select-search__select']//li")
+    METRO_OPTIONS_LOCATOR = (By.XPATH, "//div[@class='select-search__select']//li")
     # Локатор поля ввода телефона
-    phone_input_locator = (By.XPATH, "//input[@placeholder='* Телефон: на него позвонит курьер']")
+    PHONE_INPUT_LOCATOR = (By.XPATH, "//input[@placeholder='* Телефон: на него позвонит курьер']")
     # Локатор кнопки "Далее"
-    next_button_locator = (By.XPATH, "//button[text()='Далее']")
+    NEXT_BUTTON_LOCATOR = (By.XPATH, "//button[text()='Далее']")
 
     # Локатор поля выбора даты доставки
-    delivery_date_locator = (By.XPATH, "//input[@placeholder='* Когда привезти самокат']")
+    DELIVERY_DATE_LOCATOR = (By.XPATH, "//input[@placeholder='* Когда привезти самокат']")
     # Локатор поля выбора периода аренды
-    rental_period_locator = (By.CLASS_NAME, "Dropdown-placeholder")
+    RENTAL_PERIOD_LOCATOR = (By.CLASS_NAME, "Dropdown-placeholder")
     # Локатор списка опций выбора аренды
-    rental_options_locator = (By.XPATH, "//div[@class='Dropdown-option']")
+    RENTAL_OPTIONS_LOCATOR = (By.XPATH, "//div[@class='Dropdown-option']")
     # Локатор поля ввода комментария для курьера
-    comment_input_locator = (By.XPATH, "//input[@placeholder='Комментарий для курьера']")
+    COMMENT_INPUT_LOCATOR = (By.XPATH, "//input[@placeholder='Комментарий для курьера']")
     # Локатор радиокнопки выбора цвета самоката (например, для выбора цвета)
-    color_locator = (By.XPATH, "//label[contains(@class, 'Checkbox_Label')]")
+    COLOR_LOCATOR = (By.XPATH, "//label[contains(@class, 'Checkbox_Label')]")
     # Локатор кнопки "Заказать"
-    order_button_locator = (By.XPATH, "//div[contains(@class, 'Order_Buttons')]//button[text()='Заказать']")
+    ORDER_BUTTON_LOCATOR = (By.XPATH, "//div[contains(@class, 'Order_Buttons')]//button[text()='Заказать']")
 
     # Локатор кнопки подтверждения заказа
-    confirm_button_locator = (By.XPATH, "//button[text()='Да']")
+    CONFIRM_BUTTON_LOCATOR = (By.XPATH, "//button[text()='Да']")
     # Локатор сообщения об успешном создании заказа
-    success_message_locator = (By.XPATH, "//div[contains(@class, 'Order_ModalHeader')]")
+    SUCCESS_MESSAGE_LOCATOR = (By.XPATH, "//div[contains(@class, 'Order_ModalHeader')]")
     # Локатор кнопки "Посмотреть статус"
-    view_status_button_locator = (By.XPATH, "//button[text()='Посмотреть статус']")
+    VIEW_STATUS_BUTTON_LOCATOR = (By.XPATH, "//button[text()='Посмотреть статус']")
     # Локатор кнопки "Посмотреть" на странице заказа
-    look_button_locator = (By.XPATH, "//button[text()='Посмотреть']")
+    LOOK_BUTTON_LOCATOR = (By.XPATH, "//button[text()='Посмотреть']")
+
+    # Локатор логотипа «Самоката»
+    LOGO_SCOOTER = (By.XPATH, "//img[@alt='Scooter']")
+    # Локатор логотипа «Яндекса»
+    LOGO_YANDEX = (By.XPATH, "//img[@alt='Yandex']")
