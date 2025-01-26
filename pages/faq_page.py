@@ -13,20 +13,20 @@ class FAQPage(BasePage):
     ANSWER_LOCATOR = lambda self, question_text: (
         By.XPATH, f"//div[text()='{question_text}']/../following-sibling::div[@class='accordion__panel']/p")
 
+    @allure.step("Переход на страницу с «Вопросы о важном»")
     def get_faq_page(self):
-        """Загружает страницу сайта"""
+        """Функция для перехода на страницу с «Вопросы о важном»"""
         self.get_page(URLs.BASE_URL)
 
-    @allure.step("Клик по вопросу")
+    @allure.step("Прокрутка страницы и клик по вопросу")
     def click_on_question(self, question_text):
-        """Прокрутить страницу к вопросу и кликнуть по нему"""
-        self.scroll_to(self.QUESTION_LOCATOR(question_text))
-        self.wait_for_element_to_be_visible(self.QUESTION_LOCATOR(question_text))
-        self.click_on(self.QUESTION_LOCATOR(question_text))
+        """Функция для прокрутки страницы к вопросу и клику по нему"""
+        question_element = self.scroll_to(self.QUESTION_LOCATOR(question_text))
+        question_element.click()
 
     @allure.step("Извлечение текста ответа на вопрос")
     def get_answer_text(self, question_text):
-        """Получить текст ответа на вопрос"""
+        """Функция для извлечения текста ответа"""
         # Дождаться видимости ответа и получить его текст
         answer_element = self.wait_for_element_to_be_visible(self.ANSWER_LOCATOR(question_text))
 

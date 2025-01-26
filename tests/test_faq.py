@@ -41,9 +41,9 @@ class TestFAQPage:
         expected_text = question_data["expected"]
 
         faq_page = FAQPage(driver)
-        with allure.step(f"Открытие страницы FAQ и клик по вопросу: {question_text}"):
-            faq_page.get_faq_page()
-            faq_page.click_on_question(question_text)  # Клик по вопросу
+        faq_page.get_faq_page()
+        # Клик по вопросу
+        faq_page.click_on_question(question_text)
 
         actual_answer, visibility = faq_page.get_answer_text(question_text)
 

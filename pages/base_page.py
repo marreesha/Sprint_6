@@ -1,7 +1,5 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import allure
 
 
 class BasePage:
@@ -20,14 +18,14 @@ class BasePage:
 
     def click_on(self, locator):
         """Метод для клика по элементу"""
-        element = self.find_element(locator)
-        element.click()
+        _element = self.find_element(locator)
+        _element.click()
 
     def send_keys(self, locator, text):
         """Метод для ввода текста в поле"""
-        element = self.find_element(locator)
-        element.clear()  # Очищаем поле перед вводом
-        element.send_keys(text)
+        _element = self.find_element(locator)
+        _element.clear()  # Очищаем поле перед вводом
+        _element.send_keys(text)
 
     def wait_for_page(self, url):
         """Метод ожидания появления страницы"""
@@ -48,11 +46,12 @@ class BasePage:
     def scroll_to_element(self, element):
         """Метод прокрутки страницы до элемента"""
         self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+        return self.wait.until(EC.visibility_of(element))
 
     def scroll_to(self, locator):
         """Метод прокрутки страницы до элемента"""
-        element = self.find_element(locator)
-        self.scroll_to_element(element)
+        _element = self.find_element(locator)
+        return self.scroll_to_element(_element)
 
     def get_page(self, url):
         """Метод вызова и ожидания загрузки страницы"""
